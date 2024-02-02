@@ -26,11 +26,10 @@ class RecipeController extends Controller
             $filename = time() . '.' . $extension;
             $file->move('uploads/recipes', $filename);
             $recipe->img = $filename;
-            $recipe->id = uuid_create();
             $recipe->title = $request->input('name');
             $recipe->ingredient = $request->input('ingts');
             $recipe->description = $request->input('desc');
-            $recipe->categories = implode(',', request()->input('categories[]'));
+            $recipe->category_id = $request->input('category_id');
             $recipe->save();
 
 

@@ -27,13 +27,12 @@
         </div>
         <div>
             <label for="category"></label>
-            <select multiple  required name="categories[]" id="category" class="py-2.5 px-3 w-full bg-gray-100 text-sm
+            <select   required name="category_id" id="category" class="py-2.5 px-3 w-full bg-gray-100 text-sm
             rounded-xl
             outline-none
             focus:ring-2 focus:ring-orange-300">
                 <option selected value="">Select category</option>
                 @foreach($categories as $category)
-
                 <option  value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
