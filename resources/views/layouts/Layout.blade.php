@@ -21,5 +21,21 @@
 </head>
 <body class="font-[inter]">
 @yield('content')
+
+{{-- ========= Scripts =====--}}
+<script>
+    const toggler = document.getElementById('toggle_menu');
+    const navbar = document.getElementById('navbar');
+
+    toggler.addEventListener('click' , () => {
+        if (navbar.classList.contains('h-0')) {
+            navbar.classList.remove('h-0');
+            navbar.classList.add('h-[180px]');
+        }else{
+            navbar.classList.add('h-0');
+            navbar.classList.remove('h-[180px]');
+        }
+    })
+</script>
 </body>
 </html>

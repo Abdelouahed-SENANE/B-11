@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Recipe;
+use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,6 +16,10 @@ class RecipeController extends Controller
         $categories = Category::all();
         return view('/create', ['categories' => $categories]);
     }
+    public function resizeImage()
+    {
+        return view('resizeImage');
+    }
 
     public function store(Request $request)
     {
@@ -24,7 +29,8 @@ class RecipeController extends Controller
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
-            $file->move('uploads/recipes', $filename);
+            $destination = public_path('uploads/recipes/');
+            $file->move($destination, $filename);
             $recipe->img = $filename;
             $recipe->title = $request->input('name');
             $recipe->ingredient = $request->input('ingts');
@@ -99,4 +105,6 @@ class RecipeController extends Controller
 
 
     }
+
+
 }

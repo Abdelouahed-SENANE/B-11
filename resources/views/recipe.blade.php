@@ -20,9 +20,9 @@
                 </p>
             </div>
         </div>
-        <div class="container mx-auto w-[70%]">
+        <div class="container mx-auto w-[90%] lg:w-[75%]">
             <div class=" my-10 py-5 ">
-                <div class="flex items-start">
+                <div class="flex items-start flex-col lg:flex-row">
                     <div class="flex-1  ">
                         <div>
                             <img src={{ asset('uploads/recipes/' . $recipe->img) }} alt="" class=" rounded">
@@ -48,19 +48,19 @@
                                     </a>
                                 </div>
                             </div>
-                            <h2 class="text-4xl font-semibold">{{ $recipe->title }}</h2>
-                            <p class="my-4">
+                            <h2 class="lg:text-4xl font-semibold text-xl ">{{ $recipe->title }}</h2>
+                            <p class="my-4 text-sm lg:text-base">
                                 {{ $recipe->description }}
                             </p>
                         </div>
                     </div>
-                    <div class="min-w-[200px] ml-5">
+                    <div class="min-w-[200px] lg:ml-5">
                         <div>
-                            <h3 class="text-2xl font-medium my-3">Recent Recipes</h3>
+                            <h3 class="lg:text-2xl text-lg font-medium my-3">Recent Recipes</h3>
                             <ul class="">
                                 @foreach($lastest_recipes as $last_recipe)
 
-                                    <li class="my-2">
+                                    <li class="my-2 ">
                                         <a href="/recipe/{{ $last_recipe->id }}" class="text-gray-500 hover:text-black
                                         ">{{
                                         $last_recipe->title }}</a>
@@ -72,10 +72,10 @@
                             </ul>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-medium my-3">Categories</h3>
+                            <h3 class=" font-medium my-3 lg:text-2xl text-lg ">Categories</h3>
                             <ul class=" ">
                                 @foreach($categories as $categorie)
-                                    <li class="my-2 flex items-center gap-1">
+                                    <li class="my-2 flex items-center gap-1 text-sm lg:text-base">
                                         <span  class="bg-gray-100 text-black block rounded-3xl w-fit px-5 py-1.5">{{
                                         $categorie->name
                                         }}

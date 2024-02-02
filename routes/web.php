@@ -25,3 +25,5 @@ Route::get('/delete/{id}', [RecipeController::class , 'delete']);
 Route::get('/update/{id}', [RecipeController::class , 'update']);
 Route::post('/update/{id}', [RecipeController::class , 'saveRecord']);
 Route::get('/create', [RecipeController::class , 'create']);
+Route::get('resizeImage', [ImageController::class, 'resizeImage']);
+

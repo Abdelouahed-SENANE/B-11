@@ -30,9 +30,7 @@
                         <input type="text" name="search" placeholder="Search..." class="block  bg-transparent flex-1
                         outline-none">
                     </div>
-
-
-                    <input type="submit" value="Search" class="w-[120px] h-[48px] bg-orange-500 ml-3
+                    <input type="submit" value="Search" class="w-[70px] text-sm h-[48px] lg:w-[120px] bg-orange-500 ml-3
                                 text-white
                                 rounded-3xl
                                 cursor-pointer
@@ -44,32 +42,41 @@
 
 
             <div class="">
-                <div class="grid grid-cols-5 my-10">
-                    @foreach($recipes as $recipe)
+                @if(count($recipes) > 0)
+                    <div class="grid grid-cols-1 lg:grid-cols-5 my-10">
+                        @foreach($recipes as $recipe)
 
-                        <div class="rounded-xl shadow-md overflow-hidden m-2">
-                            <div>
-                                <img src={{ asset('uploads/recipes/' . $recipe->img) }} alt="" class="max-h-[200px]">
-                            </div>
-                            <div class="py-4 px-2">
-                                <h3 class="text-xl font-medium">{{ $recipe->title }}</h3>
-                                <p class="text-gray-600 text-sm my-1.5 text-nowrap text-ellipsis overflow-hidden">
-                                    {{ $recipe->description }}
-                                </p>
-                                <a href="/recipe/{{ $recipe->id }}" class="block bg-orange-500 max-w-[120px] rounded-md
+                            <div class="rounded-xl shadow-md overflow-hidden m-2">
+                                <div  style="background-image: url('/uploads/recipes/{{$recipe->img }}')"
+                                      class="w-full h-[190px] bg-cover bg-center">
+{{--                                    <img src={{ asset('uploads/recipes/' . $recipe->img) }} alt=""--}}
+{{--                                         class="">--}}
+                                </div>
+                                <div class="py-4 px-2">
+                                    <h3 class="text-xl font-medium">{{ $recipe->title }}</h3>
+                                    <p class="text-gray-600 text-sm my-1.5 text-nowrap text-ellipsis overflow-hidden">
+                                        {{ $recipe->description }}
+                                    </p>
+                                    <a href="/recipe/{{ $recipe->id }}" class="block bg-orange-500 max-w-[120px] rounded-md
                                 text-sm
                                 text-white
                             my-3
                             py-2.5
                             text-center ">
-                                    Read more
-                                </a>
+                                        Read more
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
+
+                @else
+                    <div class="h-[40vh] flex items-center justify-center">
+                        <div class="text-3xl font-bold">Recipes not exists</div>
+                    </div>
+                @endif
 
 
-                </div>
             </div>
         </div>
     </div>
